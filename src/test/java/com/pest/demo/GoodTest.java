@@ -25,7 +25,7 @@ public class GoodTest {
  @Test
  public void testMultiply()
  {
-  assertEquals(6, calculator.multiply(3, 2));
+  assertEquals(8, calculator.multiply(3, 2));
  }
  
  @Test
