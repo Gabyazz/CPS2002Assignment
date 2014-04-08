@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>CPS2002 Assignment</name>
-  <url>http://www.um.edu.mt/ict/cs/pest</url>
+  <url>https://jenkins-ict.research.um.edu.mt/job/AzzopardiMuscat/</url>
 
   <dependencies>
     <dependency>
