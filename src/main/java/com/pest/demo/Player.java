@@ -133,5 +133,14 @@ public class Player
 		return position.getC();
 	}	
 		
-	
+	/**
+	 * Sets position to manual coordinates
+	 */
+	public void setPositionManual(int r, int c)
+	{
+		startingPosition = new Position(r, c);		
+		position = new Position(r, c);	
+		
+		trail.add(new Position(r, c));				
+	}
 }
