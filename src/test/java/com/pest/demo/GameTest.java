@@ -11,7 +11,7 @@ import org.junit.*;
 import com.pest.demo.Game;
 import com.pest.demo.Map;
 import com.pest.demo.Player;
-import com.test.demo.Map.Colour;
+import com.pest.demo.Map.Colour;
 
 public class GameTest
 {
