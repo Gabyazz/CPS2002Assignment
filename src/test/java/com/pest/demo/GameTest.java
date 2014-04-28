@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.io.File;
 
-
+import org.apache.commons.io.FileUtils;
 import org.junit.*;
 
 import com.pest.demo.Game;
@@ -35,7 +35,26 @@ public class GameTest
 		assertEquals(Game.setNumPlayers(2), true);
 		assertEquals(Game.setNumPlayers(5), true);				
 	}
+	
+	@Test
+	public void htmlMapTest() throws IOException
+	{		
+		Game.setNumPlayers(2);
+		map.setSize(5,2);
+		map.createMap();
+		Player[] players = Game.getPlayers();
 		
+		for (int i=0; i < players.length; i++)
+		{
+			players[i].setPositionManual(0, 0);
+		}				
+		
+		Game.generateHTMLFiles(map);
+		File map1 = new File("player1_map.html");
+		File map2 = new File("player2_map.html");
+		
+		assertEquals(FileUtils.readFileToString(map1, "utf-8"), FileUtils.readFileToString(map2, "utf-8"));
+	}
 	
 	@Test
 	public void amntOfPlayersBounds1() 
