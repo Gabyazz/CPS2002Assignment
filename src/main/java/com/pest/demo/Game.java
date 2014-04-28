@@ -214,9 +214,14 @@ public class Game
 				writer.close();
 			}
 		}
-		catch (FileNotFoundException | UnsupportedEncodingException e)
+		catch (FileNotFoundException e1)
 		{
-			e.printStackTrace();
+			e1.printStackTrace();
+		}
+
+		catch (UnsupportedEncodingException e2)
+		{
+			e2.printStackTrace();
 		}
 	}	
 
