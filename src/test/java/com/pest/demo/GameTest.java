@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.io.File;
 
-import org.apache.commons.io.FileUtils;
+import lib.apache.commons.io.FileUtils;
 import org.junit.*;
 
 import com.pest.demo.Game;
