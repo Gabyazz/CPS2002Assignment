@@ -1,6 +1,6 @@
 package com.pest.demo;
 
-import com.test.demo.Map.Colour;
+import com.pest.demo.Map.Colour;
 
 import java.util.ArrayList;
 
