@@ -1,4 +1,4 @@
-package com.test.demo;
+package com.pest.demo;
 
 import com.test.demo.Map.Colour;
 

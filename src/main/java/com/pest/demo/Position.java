@@ -1,4 +1,4 @@
-package com.test.demo;
+package com.pest.demo;
 
 public class Position 
 {
