@@ -134,7 +134,91 @@ public class Game
 		sc.close();		
 	}
 	
-	
+	/**
+	 * Create an html file for each player 
+	 */
+	public static void generateHTMLFiles(Map map)
+	{
+		File file = null;
+		Colour colour;		
+		Colour[][] tiles = map.getTiles();
+		int found = 0, inTrail = 0;	//to check if treasure was found .... and.... to check if a position is already in the trail
+		
+		try
+		{
+			for (int i = 0; i < players.length; i++)	//for each player
+			{
+				file = new File("player" + (i+1) + "_map.html");
+				PrintWriter writer = new PrintWriter(file.getPath(), "UTF-8");
+			
+				writer.println("<html>");
+				writer.println("<head>");
+				writer.println("<META HTTP-EQUIV=\"refresh\" content=\"5\">");
+				writer.println("</head>");
+				writer.println("<body>");
+				writer.println("<table style=\"border-collapse: collapse;\">");
+			
+				for (int j = 0; j < tiles.length; j++)	//for each row
+				{
+					writer.println("<tr>");
+					for (int k = 0; k < tiles[j].length; k++)	//for each column
+					{	
+						
+						for(int l = 0; l < players[i].getTrail().size(); l++)	//for each item in the list
+						{							 
+							if((players[i].getTrail().get(l).getR() == j) && (players[i].getTrail().get(l).getC() == k))	//if position in trail
+							{	
+								inTrail = 1;
+								break;
+							}
+						}
+						
+						if (inTrail==1)	//if position in trail add is colour to file
+						{
+							colour = tiles[j][k];
+							
+							if(colour == Colour.GREEN)
+								writer.println("<td style=\"background-color:#00CC00;width:50px;height:50px;border:1px solid black;\">");							
+							
+							else if(colour == Colour.BLUE)
+								writer.println("<td style=\"background-color:#00CCFF;width:50px;height:50px;border:1px solid black;\">");	
+							
+							else if(colour == Colour.YELLOW)
+							{
+								found = 1;
+								writer.println("<td style=\"background-color:#C0C0C0;width:50px;height:50px;border:1px solid black;\">");
+								writer.println("<img src=\"images/treasure.jpg\" width=\"50px\" height=\"50px\">");
+							}							
+						}
+						else 
+						{				
+							writer.println("<td style=\"background-color:#C0C0C0;width:50px;height:50px;border:1px solid black;\">");
+						}			
+						
+						if ((j == players[i].getPositionR()) && (k == players[i].getPositionC()) && (found==0))	//if player is at this position and treasure is not
+						{
+							writer.println("<img src=\"images/player.jpg\" width=\"50px\" height=\"48px\"");
+						}
+						else
+						{
+							found = 0;	//set back to 0 as other players haven't found it yet
+						}
+						inTrail = 0;
+						writer.println("</td>");				
+					}					
+					writer.println("</tr>");		
+				}		
+				writer.println("</table>");
+				writer.println("</body>");
+				writer.print("</html>");
+				writer.close();
+			}
+		}
+		catch (FileNotFoundException | UnsupportedEncodingException e)
+		{
+			e.printStackTrace();
+		}
+	}	
 
 	/*
 	 * Returns the players array
